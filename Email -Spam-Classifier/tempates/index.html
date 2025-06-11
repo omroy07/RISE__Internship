@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Email Spam Detection</title>
+</head>
+
+<body style="font-family: Arial; text-align: center; padding-top: 50px;">
+  <h1>Email Spam Classifier</h1>
+  <form method="post">
+    <textarea name="message" rows="5" cols="50" placeholder="Enter email message here..." required></textarea><br><br>
+    <button type="submit">Check</button>
+  </form>
+  {% if result %}
+  <h2>Result: {{ result }}</h2>
+  {% endif %}
+</body>
+
+</html>
