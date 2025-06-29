@@ -1,0 +1,239 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Company Prediction</title>
+</head>
+
+<body>
+  <h1>Company Price Prediction</h1>
+
+  {% if error %}
+  <p style="color: red;">{{ error }}</p>
+  {% endif %}
+
+  {% if prediction is not none %}
+  <p>Prediction: {% if prediction == 1 %}Price is expected to go UP{% else %}Price is expected to go DOWN{% endif %}</p>
+  {% endif %}
+
+  <form method="POST" action="/">
+    <label for="company">Select Company:</label>
+    <select id="company" name="company" required>
+      <option value="" disabled selected>Select a company</option>
+      <option value="ADANIPORTS">Adani Ports (ADANIPORTS)</option>
+      <option value="ASIANPAINT">Asian Paints (ASIANPAINT)</option>
+      <option value="BAJAJ-AUTO">Bajaj Auto (BAJAJ-AUTO)</option>
+      <option value="BAJAJFINSV">Bajaj Finserv (BAJAJFINSV)</option>
+      <option value="BAJAJFINANCE">Bajaj Finance (BAJAJFINANCE)</option>
+      <option value="BHARTIARTL">Airtel (BHARTIARTL)</option>
+      <option value="BPCL">Bharat Petroleum (BPCL)</option>
+      <option value="BRITANNIA">Britannia Industries (BRITANNIA)</option>
+      <option value="CIPLA">Cipla Ltd (CIPLA)</option>
+      <option value="COALINDIA">Coal India (COALINDIA)</option>
+      <option value="DRREDDY">Dr. Reddy's Labs (DRREDDY)</option>
+      <option value="EICHERMOT">Eicher Motors (EICHERMOT)</option>
+      <option value="GAIL">GAIL (India) Ltd (GAIL)</option>
+      <option value="GRASIM">Grasim Industries (GRASIM)</option>
+      <option value="HCLTECH">HCL Technologies (HCLTECH)</option>
+      <option value="HDFC">HDFC Ltd (HDFC)</option>
+      <option value="HDFCBANK">HDFC Bank (HDFCBANK)</option>
+      <option value="HEROMOTOCO">Hero MotoCorp (HEROMOTOCO)</option>
+      <option value="HINDALCO">Hindalco Industries (HINDALCO)</option>
+      <option value="HINDUNILVR">Hindustan Unilever (HINDUNILVR)</option>
+      <option value="ICICIBANK">ICICI Bank (ICICIBANK)</option>
+      <option value="INDUSINDBK">IndusInd Bank (INDUSINDBK)</option>
+      <option value="INFRATEL">Bharti Infratel (INFRATEL)</option>
+      <option value="INFY">Infosys (INFY)</option>
+      <option value="IOC">Indian Oil Corporation (IOC)</option>
+      <option value="ITC">ITC Ltd (ITC)</option>
+      <option value="JWSTEEL">JSW Steel (JWSTEEL)</option>
+      <option value="KOTAKBANK">Kotak Mahindra Bank (KOTAKBANK)</option>
+      <option value="LT">Larsen & Toubro (LT)</option>
+      <option value="MARUTI">Maruti Suzuki (MARUTI)</option>
+      <option value="MM">Mahindra & Mahindra (MM)</option>
+      <option value="NESTLEIND">Nestlé India (NESTLEIND)</option>
+      <option value="NIFTY50_all">NIFTY50 All Companies (NIFTY50_all)</option>
+      <option value="NTPC">NTPC Ltd (NTPC)</option>
+      <option value="ONGC">Oil and Natural Gas Corp (ONGC)</option>
+      <option value="POWERGRID">Power Grid Corp (POWERGRID)</option>
+      <option value="RELIANCE">Reliance Industries (RELIANCE)</option>
+      <option value="SBIN">State Bank of India (SBIN)</option>
+      <option value="SHREECEM">Shree Cement (SHREECEM)</option>
+      <option value="SUNPHARMA">Sun Pharmaceutical (SUNPHARMA)</option>
+      <option value="TATAMOTORS">Tata Motors (TATAMOTORS)</option>
+      <option value="TATASTEEL">Tata Steel (TATASTEEL)</option>
+      <option value="TCS">Tata Consultancy Services (TCS)</option>
+      <option value="TECHIM">Tech Mahindra (TECHIM)</option>
+      <option value="TITAN">Titan Company (TITAN)</option>
+      <option value="ULTRACEMCO">UltraTech Cement (ULTRACEMCO)</option>
+      <option value="UPL">UPL Ltd (UPL)</option>
+      <option value="VEDL">Vedanta Ltd (VEDL)</option>
+      <option value="WIPRO">Wipro (WIPRO)</option>
+      <option value="ZEEL">Zee Entertainment (ZEEL)</option>
+    </select>
+    <button type="submit">Predict</button>
+  </form>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Company Prediction</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      padding-top: 40px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    form {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    select {
+      width: 100%;
+      padding: 10px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      background-color: #fdfdfd;
+      transition: border-color 0.3s;
+    }
+
+    select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+
+    button {
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    p {
+      text-align: center;
+      font-size: 16px;
+    }
+
+    p[style*="color: red"] {
+      font-weight: bold;
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <form method="POST" action="/">
+    <h1>📈 Company Price Prediction</h1>
+
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+
+    {% if request.method == 'POST' and prediction is not none %}
+    <p>Prediction: {% if prediction == 1 %}📈 Price is expected to go <strong>UP</strong>{% else %}📉 Price is expected
+      to go <strong>DOWN</strong>{% endif %}</p>
+    {% endif %}
+
+
+    <label for="company">Select Company:</label>
+    <select id="company" name="company" required>
+      <!-- your company options here -->
+      <option value="" disabled selected>Select a company</option>
+      <option value="ADANIPORTS">Adani Ports (ADANIPORTS)</option>
+      <option value="ASIANPAINT">Asian Paints (ASIANPAINT)</option>
+      <option value="BAJAJ-AUTO">Bajaj Auto (BAJAJ-AUTO)</option>
+      <option value="BAJAJFINSV">Bajaj Finserv (BAJAJFINSV)</option>
+      <option value="BAJAJFINANCE">Bajaj Finance (BAJAJFINANCE)</option>
+      <option value="BHARTIARTL">Airtel (BHARTIARTL)</option>
+      <option value="BPCL">Bharat Petroleum (BPCL)</option>
+      <option value="BRITANNIA">Britannia Industries (BRITANNIA)</option>
+      <option value="CIPLA">Cipla Ltd (CIPLA)</option>
+      <option value="COALINDIA">Coal India (COALINDIA)</option>
+      <option value="DRREDDY">Dr. Reddy's Labs (DRREDDY)</option>
+      <option value="EICHERMOT">Eicher Motors (EICHERMOT)</option>
+      <option value="GAIL">GAIL (India) Ltd (GAIL)</option>
+      <option value="GRASIM">Grasim Industries (GRASIM)</option>
+      <option value="HCLTECH">HCL Technologies (HCLTECH)</option>
+      <option value="HDFC">HDFC Ltd (HDFC)</option>
+      <option value="HDFCBANK">HDFC Bank (HDFCBANK)</option>
+      <option value="HEROMOTOCO">Hero MotoCorp (HEROMOTOCO)</option>
+      <option value="HINDALCO">Hindalco Industries (HINDALCO)</option>
+      <option value="HINDUNILVR">Hindustan Unilever (HINDUNILVR)</option>
+      <option value="ICICIBANK">ICICI Bank (ICICIBANK)</option>
+      <option value="INDUSINDBK">IndusInd Bank (INDUSINDBK)</option>
+      <option value="INFRATEL">Bharti Infratel (INFRATEL)</option>
+      <option value="INFY">Infosys (INFY)</option>
+      <option value="IOC">Indian Oil Corporation (IOC)</option>
+      <option value="ITC">ITC Ltd (ITC)</option>
+      <option value="JWSTEEL">JSW Steel (JWSTEEL)</option>
+      <option value="KOTAKBANK">Kotak Mahindra Bank (KOTAKBANK)</option>
+      <option value="LT">Larsen & Toubro (LT)</option>
+      <option value="MARUTI">Maruti Suzuki (MARUTI)</option>
+      <option value="MM">Mahindra & Mahindra (MM)</option>
+      <option value="NESTLEIND">Nestlé India (NESTLEIND)</option>
+      <option value="NIFTY50_all">NIFTY50 All Companies (NIFTY50_all)</option>
+      <option value="NTPC">NTPC Ltd (NTPC)</option>
+      <option value="ONGC">Oil and Natural Gas Corp (ONGC)</option>
+      <option value="POWERGRID">Power Grid Corp (POWERGRID)</option>
+      <option value="RELIANCE">Reliance Industries (RELIANCE)</option>
+      <option value="SBIN">State Bank of India (SBIN)</option>
+      <option value="SHREECEM">Shree Cement (SHREECEM)</option>
+      <option value="SUNPHARMA">Sun Pharmaceutical (SUNPHARMA)</option>
+      <option value="TATAMOTORS">Tata Motors (TATAMOTORS)</option>
+      <option value="TATASTEEL">Tata Steel (TATASTEEL)</option>
+      <option value="TCS">Tata Consultancy Services (TCS)</option>
+      <option value="TECHIM">Tech Mahindra (TECHIM)</option>
+      <option value="TITAN">Titan Company (TITAN)</option>
+      <option value="ULTRACEMCO">UltraTech Cement (ULTRACEMCO)</option>
+      <option value="UPL">UPL Ltd (UPL)</option>
+      <option value="VEDL">Vedanta Ltd (VEDL)</option>
+      <option value="WIPRO">Wipro (WIPRO)</option>
+      <option value="ZEEL">Zee Entertainment (ZEEL)</option>
+    </select>
+
+    <button type="submit">Predict</button>
+  </form>
+</body>
+
+</html>
