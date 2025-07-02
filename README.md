@@ -18,7 +18,7 @@
 - **Description**: A system that recognizes handwritten characters or digits.
 - **Technologies**: Python, TensorFlow/Keras, Convolutional Neural Networks (CNNs).
 - **Image**:  
-  ![Handwritten Recognition System](https://raw.githubusercontent.com/omroy07/RISE__Internship/main/Images/didit1.png)
+  ![Handwritten Recognition System](https://raw.githubusercontent.com/omroy07/RISE__Internship/main/Images/digit1.png)
   ![Handwritten Recognition System](https://raw.githubusercontent.com/omroy07/RISE__Internship/main/Images/digit2.png)
 
 📁 **Combined Video Of All Three Projects**  
